@@ -1,4 +1,17 @@
+div{
+  position: relative;
+  box-sizing: border-box;
+}
+
 body{
   margin: 0;
   padding: 0;
+}
+
+a{
+  text-decoration: none;
+  color: #2c3e50;
+  &:visited{
+    color: #2c3e50;
+  }
 }

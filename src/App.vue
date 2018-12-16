@@ -3,7 +3,7 @@
     <div
       :class="[
         'accounts-container',
-        viewMode,
+        {'grid-view' : viewMode === 'grid'},
       ]" 
     >
       <TwitterAccount
@@ -26,14 +26,11 @@ export default {
   },
   data(){
     return {
-      viewColumnCount: 3,
+      viewMode: 'grid',
       accounts: settings.getSettings('accounts')
     }
   },
   computed: {
-    viewMode(){
-      return 'columns-' + this.viewColumnCount
-    }
   }
 }
 </script>
@@ -45,14 +42,23 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  background-color: #2c3e50;
   height: 100vh;
+  overflow: auto;
 }
 .accounts-container{
   display: grid;
-  grid-template-columns: 1fr;
-  @media(min-width: 600px){
-    
+  grid-template-columns: 300px;
+  margin: 60px auto;
+  grid-gap: 20px;
+  padding: 20px;
+  width: auto;
+  max-width: 1500px;
+  @media(min-width: 900px){
+    &.grid-view{
+      grid-template-columns: repeat(3, minmax(260px, 33.33333%));
+    }
   }
+
 }
 </style>

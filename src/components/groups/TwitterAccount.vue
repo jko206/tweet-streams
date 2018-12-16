@@ -26,7 +26,7 @@
         <div
           :class="[
             'tab',
-            {'isActive' : feedType === 'tweets'}
+            {'is-active' : feedType === 'tweets'}
           ]"
           @click="feedType = 'tweets'"
         >
@@ -35,7 +35,7 @@
         <div
           :class="[
             'tab',
-            {'isActive' : feedType === 'mentions'}
+            {'is-active' : feedType === 'mentions'}
           ]"
           @click="feedType = 'mentions'"
         >
@@ -53,10 +53,76 @@
   </div>
 </template>
 <style lang="scss">
-.accounts-container{
-  @extend %dead-center;
-  height: 100%;
+.account-container {
+  min-height: 500px;
+  background: white;
+  padding: 10px;
+  border: 1px solid gainsboro;
+  border-radius: 10px;
 }
+%positioner {
+  position: absolute;
+  width: 100%;
+}
+.drag-handle-container {
+  @extend %positioner;
+  top: -10px; 
+  height: 20px;
+}
+.profile-container {
+  display: flex;
+  top: 10px;
+  height: 100px;
+  display: flex;
+  padding: 10px;
+}
+  .profile-pic-wrap{
+    @extend %dead-center;
+    height: 80px;
+    width: 80px;
+    flex: 0 0 auto;
+    border-radius: 100%;
+    background: gray;
+  }
+    .profile-pic{
+      min-width: 100%;
+      min-height: 100%;
+    }
+  .twitter-handle-wrap{
+    flex: 1 1 auto;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+  }
+.tabs {
+  @extend %positioner;
+  top: 110px;
+  height: 40px;
+}
+  .tab{
+    @extend %dead-center;
+    position: absolute;
+    top: 0;
+    width: 50%;
+    background: gray;
+    height: 100%;
+    &:last-child{
+      left: 50%;
+    }
+    &.is-active{
+      background: white;
+      border: 1px solid gainsboro;
+      border-bottom-width: 0;
+    }
+  }
+.feed-stream-container {
+  @extend %positioner;
+  top: 150px;
+  min-height: 330px;
+  border: 1px solid gainsboro;
+  border-top-width: 0;
+}
+
 </style>
 <script>
 import helper from '../../functions/helper.js'
