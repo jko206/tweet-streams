@@ -8,7 +8,7 @@ export default {
       ]
     }
   },
-  setSetting(prop, val){
+  // setSetting(prop, val){
 
-  }
+  // }
 }

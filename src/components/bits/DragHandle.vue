@@ -1,5 +1,9 @@
 <template>
-  <div class="drag-handle">
+  <div 
+    :class="[
+      'drag-handle',
+    ]"
+  >
     <div class="grip"></div>
     <div class="grip"></div>
     <div class="grip"></div>
@@ -19,5 +23,26 @@
     background: gainsboro;
     margin: 1px;
   }
+
+  &.is-grabbed{
+    cursor: move;
+    cursor: grabbing;
+    cursor: -webkit-grabbing;
+  }
 }
 </style>
+<script>
+export default {
+  data(){
+    return {
+      isGrabbedState: false,
+    }
+  },
+  methods: {
+    isGrabbed(e, state){
+      this.isGrabbedState = state
+      
+    }
+  }
+}
+</script>

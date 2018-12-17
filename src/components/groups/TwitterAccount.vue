@@ -1,7 +1,9 @@
 <template>
   <div class="account-container">
     <div class="drop-zone"></div>
-    <div class="account">
+    <div 
+      class="account" 
+    >
       <div class="drag-handle-container">
         <DragHandle />
       </div>
@@ -54,78 +56,78 @@
 </template>
 <style lang="scss">
 .account-container {
-  min-height: 500px;
+  max-height: 100%;
+}
+.drop-zone{
+  
+}
+.account {
+  display: flex;
+  flex-direction: column;
   background: white;
   padding: 10px;
   border: 1px solid gainsboro;
   border-radius: 10px;
+  max-height: 100%;
 }
-%positioner {
-  position: absolute;
-  width: 100%;
-}
-.drag-handle-container {
-  @extend %positioner;
-  top: -10px; 
-  height: 20px;
-}
-.profile-container {
-  display: flex;
-  top: 10px;
-  height: 100px;
-  display: flex;
-  padding: 10px;
-}
-  .profile-pic-wrap{
-    @extend %dead-center;
-    height: 80px;
-    width: 80px;
+  .drag-handle-container {
+    top: -10px; 
+    height: 20px;
     flex: 0 0 auto;
-    border-radius: 100%;
-    background: gray;
   }
-    .profile-pic{
-      min-width: 100%;
-      min-height: 100%;
-    }
-  .twitter-handle-wrap{
-    flex: 1 1 auto;
+  .profile-container {
     display: flex;
-    align-items: center;
+    height: 100px;
     padding: 10px;
+    flex: 0 0 auto;
   }
-.tabs {
-  @extend %positioner;
-  top: 110px;
-  height: 40px;
-}
-  .tab{
-    @extend %dead-center;
-    position: absolute;
-    top: 0;
-    width: 50%;
-    background: gray;
-    height: 100%;
-    &:last-child{
-      left: 50%;
+    .profile-pic-wrap{
+      @extend %dead-center;
+      height: 80px;
+      width: 80px;
+      flex: 0 0 auto;
+      border-radius: 100%;
+      background: gray;
     }
-    &.is-active{
-      background: white;
-      border: 1px solid gainsboro;
-      border-bottom-width: 0;
+      .profile-pic{
+        min-width: 100%;
+        min-height: 100%;
+      }
+    .twitter-handle-wrap{
+      flex: 1 1 auto;
+      display: flex;
+      align-items: center;
+      padding: 10px;
     }
+  .tabs {
+    height: 40px;
+    flex: 0 0 auto;
   }
-.feed-stream-container {
-  @extend %positioner;
-  top: 150px;
-  min-height: 330px;
-  border: 1px solid gainsboro;
-  border-top-width: 0;
-}
+    .tab{
+      @extend %dead-center;
+      position: absolute;
+      top: 0;
+      width: 50%;
+      background: gray;
+      height: 100%;
+      &:last-child{
+        left: 50%;
+      }
+      &.is-active{
+        background: white;
+        border: 1px solid gainsboro;
+        border-bottom-width: 0;
+      }
+    }
+  .feed-stream-container {
+    flex: 1 1 330px;
+    border: 1px solid gainsboro;
+    border-top-width: 0;
+    // overflow: auto;
+  }
 
 </style>
 <script>
-import helper from '../../functions/helper.js'
 import DragHandle from '../bits/DragHandle.vue'
 import FeedStream from '../modules/FeedStream.vue'
 export default {
