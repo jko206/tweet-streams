@@ -12,9 +12,9 @@
         @click="$store.commit('changeLayout', 1)"
       >
         <div class="option-icon single-column">
-          <div class="option-icon__column"></div>
-          <div class="option-icon__column"></div>
-          <div class="option-icon__column"></div>
+          <div class="option-icon__column"/>
+          <div class="option-icon__column"/>
+          <div class="option-icon__column"/>
         </div>
         <div class="option-text">
           Single Column
@@ -28,9 +28,9 @@
         @click="$store.commit('changeLayout', 3)"
       >
         <div class="option-icon triple-column">
-          <div class="option-icon__column"></div>
-          <div class="option-icon__column"></div>
-          <div class="option-icon__column"></div>
+          <div class="option-icon__column"/>
+          <div class="option-icon__column"/>
+          <div class="option-icon__column"/>
         </div>
         <div class="option-text">
           Triple Column

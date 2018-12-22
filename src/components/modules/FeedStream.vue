@@ -78,7 +78,8 @@ import LoadingIcon from '../bits/LoadingIcon.vue'
 import axios from 'axios'
 
 const isDevEnv = process.env.NODE_ENV === 'development'
-const BASE_URL = "http://localhost:7890"
+const protocol = window.location.protocol
+const BASE_URL = `${protocol}//localhost:7890`
 const INIT_LOAD_COUNT = isDevEnv ? 5 : 30
 const NEXT_LOAD_COUNT = isDevEnv ? 1 : 10
 
