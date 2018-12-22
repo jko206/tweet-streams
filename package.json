@@ -9,13 +9,16 @@
     "start": "node server.js"
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "http-server": "^0.9.0",
     "node-sass": "^4.11.0",
     "sass-loader": "^7.1.0",
     "sass-resources-loader": "^2.0.0",
     "twitter-proxy": "^2.0.0",
     "vue": "^2.5.17",
-    "vuedraggable": "^2.17.0"
+    "vue-axios": "^2.1.4",
+    "vuedraggable": "^2.17.0",
+    "vuex": "^3.0.1"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.0.5",
