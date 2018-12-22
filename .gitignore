@@ -20,4 +20,4 @@ yarn-error.log*
 *.sln
 *.sw*
 example-fetch.json
-.firebase/hosting.ZGlzdA.cache
+.firebase/hosting.*.cache
