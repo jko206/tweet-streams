@@ -77,9 +77,10 @@ import FeedItem from '../pieces/FeedItem.vue'
 import LoadingIcon from '../bits/LoadingIcon.vue'
 import axios from 'axios'
 
-const BASE_URL = "${BASE_URL}"
-const INIT_LOAD_COUNT = 30
-const NEXT_LOAD_COUNT = 10
+const isDevEnv = process.env.NODE_ENV === 'development'
+const BASE_URL = "http://localhost:7890"
+const INIT_LOAD_COUNT = isDevEnv ? 5 : 30
+const NEXT_LOAD_COUNT = isDevEnv ? 1 : 10
 
 export default {
   components: {
@@ -109,8 +110,6 @@ export default {
         .then(res=>{
           
           let tweets = this.feedType === 'tweets' ? res.data : res.data.statuses
-          // eslint-disable-next-line
-          // console.log(tweets)
           let newTweets = tweets
             .map(tweet=>{
               let {
@@ -137,9 +136,6 @@ export default {
               }
             })
 
-          // eslint-disable-next-line
-          // console.log(newTweets)
-
           if(this.feedType === 'tweets') this.tweets.push(...newTweets)
           else this.mentions.push(...newTweets)
 
@@ -155,7 +151,6 @@ export default {
           } else {
             let nextResults = res.data.search_metadata.next_results
             this.queryForNextMentionSet = nextResults
-            // console.log(nextResults)
           }
           this.isError = false
           this.isLoading = false
