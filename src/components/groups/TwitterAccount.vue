@@ -12,6 +12,7 @@
         <div class="profile-pic-wrap">
           <img 
             v-if="profilePicSrc"
+            class="profile-pic"
             :src="profilePicSrc"
             :alt="profilePicAlt"
           />
@@ -48,18 +49,21 @@
       <div class="feed-stream-container">
         <FeedStream 
           :feedType="feedType"
-          :handle="account"
+          :account="account"
         />
       </div>
     </div>
   </div>
 </template>
 <style lang="scss">
+.is-dragging{
+  .account-container{
+    height: 33%;
+  }
+}
 .account-container {
   max-height: 100%;
-}
-.drop-zone{
-  
+  overflow-x: hidden;
 }
 .account {
   display: flex;
@@ -68,7 +72,12 @@
   padding: 10px;
   border: 1px solid gainsboro;
   border-radius: 10px;
-  max-height: 100%;
+  // max-height: 100%;
+  max-height: calc(100vh - 40px);
+  overflow-y: auto;
+  @media(min-width: 900px){
+    max-height: 100%;
+  }
 }
   .drag-handle-container {
     top: -10px; 
@@ -88,10 +97,11 @@
       flex: 0 0 auto;
       border-radius: 100%;
       background: gray;
+      overflow: hidden;
     }
       .profile-pic{
-        min-width: 100%;
-        min-height: 100%;
+        max-width: 100%;
+        max-height: 100%;
       }
     .twitter-handle-wrap{
       flex: 1 1 auto;
@@ -130,6 +140,9 @@
 <script>
 import DragHandle from '../bits/DragHandle.vue'
 import FeedStream from '../modules/FeedStream.vue'
+// import helper from '../../functions/helper.js'
+import axios from 'axios'
+
 export default {
   props: {
     account: {
@@ -144,11 +157,26 @@ export default {
   data(){
     return {
       profilePicSrc: '',
-      profilePicAlt: 'User profile pic not available',
-      feedType: 'tweets' // or 'mentions'
+      feedType: 'tweets', // or 'mentions'
+      // isLoading: true,
     }
   },
-
-
+  computed: {
+    profilePicAlt(){
+      return this.profilePicSrc ? `${this.account}'s profile image` : 'User profile pic not available'
+    }
+  },
+  mounted(){
+    axios
+      .get(`http://localhost:7890/1.1/users/show.json?screen_name=${this.account}`)
+      .then(res=>{
+        let imageURL = res.data.profile_image_url.replace('_normal', '')
+        this.profilePicSrc = imageURL
+      })
+      .catch(err=>{
+        // eslint-disable-next-line
+        console.log(err)        
+      })
+  }
 }
 </script>
