@@ -11,3 +11,6 @@ The app loads the most recent 30 tweets from @ycombinator, @MakeSchool, and @new
 - `Mentions` tab loads statuses (tweets) in which the account's handle is included.
 - Hovering / clicking the time displays the timestamp.
 - Designed responsively, so it looks good in any screen size 300px and up. 
+- Clicking the tweet opens the tweet in twitter.com
+- Embedded media are displayed separately. 
+- Display messages for when there is no tweets, or when there is an error. 
