@@ -40,6 +40,12 @@
   </div>
 </template>
 <style lang="scss" scoped>
+.layout-option{
+  display: none;
+  @media(min-width: 900px){
+    display: block;
+  }
+}
 .option-container{
   margin: 10px;
   padding: 10px;
